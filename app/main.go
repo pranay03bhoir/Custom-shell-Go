@@ -40,7 +40,7 @@ func main() {
 				default:
 					foundPath := findFilePath(extractBuiltInCommand)
 					if foundPath != "" {
-						fmt.Println(foundPath)
+						fmt.Printf("%s is %s\n", command, foundPath)
 					} else {
 						fmt.Printf("%s: not found\n", extractBuiltInCommand)
 					}
@@ -57,9 +57,13 @@ func findFilePath(command string) string {
 	directories := filepath.SplitList(pathEnv)
 	for _, directory := range directories {
 		fullPath := filepath.Join(directory, command)
-		_, err := os.Stat(fullPath)
+		info, err := os.Stat(fullPath)
 		if err == nil {
-			return fullPath
+			isItRegularFile := info.Mode().IsRegular()
+			isItExecutable := info.Mode().Perm()&0111 != 0
+			if isItRegularFile && isItExecutable {
+				return fullPath
+			}
 
 		}
 	}
