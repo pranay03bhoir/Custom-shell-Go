@@ -56,17 +56,12 @@ func main() {
 				command = parts[0]
 				args := parts[1:]
 				cmd := exec.Command(command, args...)
-				args = append(args, command)
-				fmt.Println("Program was passed", len(args), "args (including program name).")
-				for i, arg := range args {
-					fmt.Printf("Arg #%d: %s", i, arg[i])
-				}
 				output, err := cmd.CombinedOutput()
 				if err != nil {
-					fmt.Println("Error: ", err)
-					return
+					fmt.Printf("%s: command not found\n", command)
+					continue
 				}
-				fmt.Println(string(output))
+				fmt.Print(string(output))
 			} else {
 				fmt.Printf("%s: command not found\n", command)
 			}
