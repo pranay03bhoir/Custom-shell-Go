@@ -14,7 +14,14 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Print("$ ")
+		exit := scanner.Text()
+		if exit == "exit" {
+			return
+		}
 		if scanner.Scan() {
+			if scanner.Text() == "exit" {
+				return
+			}
 			fmt.Printf("%s: command not found\n", scanner.Text())
 		}
 	}
