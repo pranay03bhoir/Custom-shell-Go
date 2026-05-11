@@ -40,7 +40,7 @@ func main() {
 				default:
 					foundPath := findFilePath(extractBuiltInCommand)
 					if foundPath != "" {
-						fmt.Printf("%s is %s\n", command, foundPath)
+						fmt.Printf("%s is %s\n", extractBuiltInCommand, foundPath)
 					} else {
 						fmt.Printf("%s: not found\n", extractBuiltInCommand)
 					}
