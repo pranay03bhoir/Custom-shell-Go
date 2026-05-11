@@ -12,7 +12,7 @@ func main() {
 	var userInput any
 
 	fmt.Print("$ ")
-	fmt.Scan(&userInput)
+	fmt.Scanln(&userInput)
 	if userInput != nil {
 		fmt.Println(userInput, ": command not found")
 	}
