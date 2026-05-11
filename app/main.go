@@ -12,10 +12,10 @@ var _ = fmt.Print
 func main() {
 	// TODO: Uncomment the code below to pass the first stage
 	scanner := bufio.NewScanner(os.Stdin)
-	var userInput any
-	fmt.Print("$ ")
-	userInput = scanner.Scan()
-	if userInput != nil {
-		fmt.Printf("%s: command not found\n", scanner.Text())
+	for {
+		fmt.Print("$ ")
+		if scanner.Scan() {
+			fmt.Printf("%s: command not found\n", scanner.Text())
+		}
 	}
 }
