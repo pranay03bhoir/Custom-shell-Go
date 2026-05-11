@@ -57,7 +57,7 @@ func main() {
 				args := parts[1:]
 				cmd := exec.Command(command, args...)
 				args = append(args, command)
-				fmt.Println("Program was passed ", len(args), " args (including program name).")
+				fmt.Println("Program was passed", len(args), "args (including program name).")
 				output, err := cmd.CombinedOutput()
 				if err != nil {
 					fmt.Println("Error: ", err)
