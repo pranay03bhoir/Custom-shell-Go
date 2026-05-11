@@ -36,7 +36,7 @@ func main() {
 				case "type":
 					fmt.Println(extractBuiltInCommand,"is a shell builtin")
 				default:
-					fmt.Println(extractBuiltInCommand,":not found")
+					fmt.Println(extractBuiltInCommand,": not found")
 				}
 			} else {
 				fmt.Printf("%s: command not found\n", command)
