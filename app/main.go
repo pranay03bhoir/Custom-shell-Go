@@ -35,8 +35,11 @@ func main() {
 				cleanStr := strings.Trim(command[5:], "'")
 				fmt.Println(cleanStr)
 			} else {
-				cleanStr := strings.TrimSpace(command[5:])
-				fmt.Printf("%s\n", cleanStr) // this line prints the string entered after the echo command. example - echo hello --> hello
+				extractedWords := strings.Fields(command[5:])
+				// newStr := strings.Join(cleanStr, "")
+				cleanStr := strings.Join(extractedWords, " ")
+				fmt.Printf("%s \n", cleanStr) // this line prints the string entered after the echo command. example - echo hello --> hello
+
 			}
 		case strings.HasPrefix(command, "type "):
 			// This code implements the type command which return if a given command is a builtin command.
