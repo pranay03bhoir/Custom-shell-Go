@@ -33,11 +33,11 @@ func main() {
 		case strings.HasPrefix(command, "echo "): // this code is a implementation fo the echo command.
 			if strings.Contains(command[5:], "'") {
 				cleanStr := strings.Trim(command[5:], "'")
-				fmt.Println("quoted str ", cleanStr)
+				fmt.Println(cleanStr)
 			} else {
 				cleanStr := strings.Split(command[5:], " ")
 				newStr := strings.Join(cleanStr, "")
-				fmt.Printf("unquotes str %s\n", newStr) // this line prints the string entered after the echo command. example - echo hello --> hello
+				fmt.Printf("%s\n", newStr) // this line prints the string entered after the echo command. example - echo hello --> hello
 			}
 		case strings.HasPrefix(command, "type "):
 			// This code implements the type command which return if a given command is a builtin command.
