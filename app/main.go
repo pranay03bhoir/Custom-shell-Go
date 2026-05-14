@@ -34,10 +34,14 @@ func main() {
 			if strings.Contains(command[5:], "'") {
 				// cleanStr := strings.Trim(command[5:], "'")
 				cleanStr := strings.ReplaceAll(command[5:], "'", "")
+				fmt.Printf("%s \n", cleanStr)
+				if strings.Contains("/", cleanStr) {
 
-				newStr := strings.Fields(cleanStr)
+					newStr := strings.Fields(cleanStr)
 
-				fmt.Println(strings.Join(newStr, " "))
+					fmt.Println(strings.Join(newStr, " "))
+				}
+
 			} else {
 				extractedWords := strings.Fields(command[5:])
 				// newStr := strings.Join(cleanStr, "")
