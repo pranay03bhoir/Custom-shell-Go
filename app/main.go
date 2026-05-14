@@ -35,7 +35,7 @@ func main() {
 				cleanStr := strings.Trim(command[5:], "'")
 				fmt.Println(cleanStr)
 			} else {
-				cleanStr := strings.TrimPrefix(command[5:]," ")
+				cleanStr := strings.TrimSpace(command[5:])
 				fmt.Printf("%s\n", cleanStr) // this line prints the string entered after the echo command. example - echo hello --> hello
 			}
 		case strings.HasPrefix(command, "type "):
