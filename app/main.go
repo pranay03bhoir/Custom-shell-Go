@@ -101,7 +101,7 @@ func main() {
 
 			// This code returns the user input (commands) in an array from.
 			// Example - java -version --> ["java","-version"]
-			fullPath := findFilePath(command)
+			fullPath, err := exec.LookPath(command)
 			parts := strings.Fields(fullPath)
 			// Here we separate the actual commands and arguments of the commands. and store the command in the command variable.
 			// Example - java -version --> java
