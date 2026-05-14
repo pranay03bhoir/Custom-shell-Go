@@ -33,11 +33,13 @@ func main() {
 		case strings.HasPrefix(command, "echo "): // this code is a implementation fo the echo command.
 			if strings.Contains(command[5:], "'") {
 				// cleanStr := strings.Trim(command[5:], "'")
-				cleanStr := strings.ReplaceAll(command[5:], "'", "")
-				fmt.Printf("%s \n", cleanStr)
-				if strings.Contains("/", cleanStr) {
-					newStr := strings.Fields(cleanStr)
-					fmt.Println(strings.Join(newStr, ""))
+				if strings.Contains("/", command[5:]) && strings.Contains("'", command[5:]) {
+					newStr := strings.Fields(command[5:])
+					fmt.Println(strings.Join(newStr, " "))
+				} else {
+
+					cleanStr := strings.ReplaceAll(command[5:], "'", "")
+					fmt.Printf("%s \n", cleanStr)
 				}
 
 			} else {
@@ -99,7 +101,8 @@ func main() {
 
 			// This code returns the user input (commands) in an array from.
 			// Example - java -version --> ["java","-version"]
-			parts := strings.Fields(command)
+			fullPath := findFilePath(command)
+			parts := strings.Fields(fullPath)
 			// Here we separate the actual commands and arguments of the commands. and store the command in the command variable.
 			// Example - java -version --> java
 			name := parts[0]
