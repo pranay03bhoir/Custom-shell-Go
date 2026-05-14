@@ -53,6 +53,13 @@ func main() {
 						fmt.Printf("%s: not found\n", extractBuiltInCommand)
 					}
 				}
+			} else if command == "pwd" {
+				pwd, err := os.Getwd()
+				if err != nil {
+					fmt.Println("Error in finding current directory: ", err)
+				}
+				fmt.Println(pwd)
+
 			} else if command != "" { // This code block executes external commands.
 
 				// This code returns the user input (commands) in an array from.
