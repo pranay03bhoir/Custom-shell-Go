@@ -34,7 +34,10 @@ func main() {
 			if strings.Contains(command[5:], "'") {
 				// cleanStr := strings.Trim(command[5:], "'")
 				cleanStr := strings.ReplaceAll(command[5:], "'", "")
-				fmt.Println(cleanStr)
+
+				newStr := strings.Fields(cleanStr)
+
+				fmt.Println(strings.Join(newStr,""))
 			} else {
 				extractedWords := strings.Fields(command[5:])
 				// newStr := strings.Join(cleanStr, "")
