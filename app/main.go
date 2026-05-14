@@ -37,7 +37,7 @@ func main() {
 
 				newStr := strings.Fields(cleanStr)
 
-				fmt.Println(strings.Join(newStr,""))
+				fmt.Println(strings.Join(newStr, " "))
 			} else {
 				extractedWords := strings.Fields(command[5:])
 				// newStr := strings.Join(cleanStr, "")
