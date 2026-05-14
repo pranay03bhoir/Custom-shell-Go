@@ -42,6 +42,8 @@ func main() {
 					fmt.Println(extractBuiltInCommand, "is a shell builtin")
 				case "type":
 					fmt.Println(extractBuiltInCommand, "is a shell builtin")
+				case "pwd":
+					fmt.Println(extractBuiltInCommand, "is a shell builtin")
 				default:
 					// This code checks whether the command has a executable path or not.
 					foundPath := findFilePath(extractBuiltInCommand)
@@ -51,16 +53,25 @@ func main() {
 						fmt.Printf("%s: not found\n", extractBuiltInCommand)
 					}
 				}
-			} else if command != "" {
+			} else if command != "" { // This code block executes external commands.
+
+				// This code returns the user input (commands) in an array from.
+				// Example - java -version --> ["java","-version"]
 				parts := strings.Fields(scanner.Text())
+				// Here we separate the actual commands and arguments of the commands. and store the command in the command variable.
+				// Example - java -version --> java
 				command = parts[0]
+				// Here the arguments are separated and are stored in the args variable.
 				args := parts[1:]
+				// Here we import the os/exec module to execute external commands.
 				cmd := exec.Command(command, args...)
+				// This returns us the output and the error combined.
 				output, err := cmd.CombinedOutput()
 				if err != nil {
 					fmt.Printf("%s: command not found\n", command)
 					continue
 				}
+				// Actual output of the command is displayed.
 				fmt.Print(string(output))
 			} else {
 				fmt.Printf("%s: command not found\n", command)
