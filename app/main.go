@@ -33,12 +33,8 @@ func main() {
 		case strings.HasPrefix(command, "echo "): // this code is a implementation fo the echo command.
 			if strings.Contains(command[5:], "'") {
 				// cleanStr := strings.Trim(command[5:], "'")
-				cleanStr := strings.Fields(command[5:])
-				newStr := strings.Join(cleanStr, " ")
-				for _, v := range cleanStr {
-					newStr = strings.ReplaceAll(v, "'", "")
-				}
-				fmt.Println(newStr)
+				cleanStr := strings.ReplaceAll(command[5:], "'", "")
+				fmt.Println(cleanStr)
 			} else {
 				extractedWords := strings.Fields(command[5:])
 				// newStr := strings.Join(cleanStr, "")
